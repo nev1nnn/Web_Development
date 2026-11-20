@@ -3,247 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book tickets for IPL 2026 matches">
     <title>Book Tickets | IPL 2026</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        <style>
+    * { box-sizing: border-box; }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #172033;
-            background: #f3f6fb;
-        }
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #172033;
+        background: #f3f6fb;
+    }
 
-        header {
-            padding: 22px 8%;
-            color: white;
-            background: #102b5c;
-        }
+    header {
+        padding: 22px 8%;
+        color: white;
+        background: #102b5c;
+    }
 
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 1.6rem;
-        }
+    header h1 { margin: 0 0 10px; }
 
-        nav a {
-            color: #dce8ff;
-            text-decoration: none;
-        }
+    header a { color: #dce8ff; }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+    main {
+        width: min(900px, 92%);
+        margin: 36px auto;
+    }
 
-        main {
-            width: min(900px, 92%);
-            margin: 40px auto;
-        }
+    .intro { margin-bottom: 24px; text-align: center; }
+    .intro h2 { color: #102b5c; }
 
-        .intro {
-            margin-bottom: 24px;
-            text-align: center;
-        }
+    .card {
+        display: grid;
+        grid-template-columns: 1fr 270px;
+        gap: 30px;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(16, 43, 92, .1);
+    }
 
-        .intro h2 {
-            margin-bottom: 8px;
-            color: #102b5c;
-            font-size: 2rem;
-        }
+    .field { margin-bottom: 16px; }
 
-        .intro p {
-            margin-top: 0;
-            color: #5b6577;
-        }
+    label, legend {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 600;
+    }
 
-        .booking-card {
-            display: grid;
-            grid-template-columns: 1fr 270px;
-            gap: 32px;
-            padding: 32px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(16, 43, 92, 0.1);
-        }
+    input, select {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px;
+        border: 1px solid #cbd3e1;
+        border-radius: 8px;
+        font: inherit;
+    }
 
-        .booking-card h3 {
-            margin-top: 0;
-            color: #102b5c;
-        }
+    input:focus, select:focus {
+        outline: 3px solid #c9dcff;
+        border-color: #2563eb;
+    }
 
-        .field {
-            margin-bottom: 18px;
-        }
+    fieldset {
+        margin: 4px 0 20px;
+        padding: 14px;
+        border: 1px solid #d8deea;
+        border-radius: 8px;
+    }
 
-        label,
-        legend {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: 600;
-        }
+    fieldset label {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin: 5px 14px 5px 0;
+        font-weight: normal;
+    }
 
-        input,
-        select {
-            width: 100%;
-            min-height: 44px;
-            padding: 10px 12px;
-            border: 1px solid #cbd3e1;
-            border-radius: 8px;
-            background: white;
-            font: inherit;
-        }
+    fieldset input { width: auto; min-height: auto; }
 
-        input:focus,
-        select:focus {
-            outline: 3px solid #c9dcff;
-            border-color: #2563eb;
-        }
+    button {
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 8px;
+        font: inherit;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-        fieldset {
-            margin: 4px 0 22px;
-            padding: 16px;
-            border: 1px solid #d8deea;
-            border-radius: 8px;
-        }
+    .submit-button { color: white; background: #e24b32; }
+    .reset-button { color: #24324a; background: #e8edf5; }
 
-        fieldset label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 4px 16px 4px 0;
-            font-weight: normal;
-        }
+    aside {
+        align-self: start;
+        padding: 20px;
+        background: #f3f6fb;
+        border-radius: 12px;
+    }
 
-        fieldset input {
-            width: auto;
-            min-height: auto;
-        }
+    .prices {
+        padding-left: 20px;
+        line-height: 1.8;
+    }
 
-        .buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+    .total {
+        padding-top: 12px;
+        border-top: 1px solid #cbd3e1;
+        font-size: 1.15rem;
+        font-weight: bold;
+    }
 
-        button {
-            min-height: 44px;
-            padding: 10px 18px;
-            border: 0;
-            border-radius: 8px;
-            font: inherit;
-            font-weight: 700;
-            cursor: pointer;
-        }
+    #success-message {
+        display: none;
+        margin-top: 20px;
+        padding: 16px;
+        color: #14532d;
+        background: #dcfce7;
+        border-radius: 8px;
+    }
 
-        .submit-button {
-            color: white;
-            background: #e24b32;
-        }
+    #success-message:focus { outline: 2px solid #15803d; }
 
-        .submit-button:hover {
-            background: #c83c27;
-        }
+    @media (max-width: 700px) {
+        .card { grid-template-columns: 1fr; padding: 22px; }
+    }
 
-        .reset-button {
-            color: #24324a;
-            background: #e8edf5;
-        }
+    .toast {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 14px 20px;
+        color: white;
+        background: #102b5c;
+        border-radius: 8px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.3s, transform 0.3s;
+        pointer-events: none;
+    }
 
-        .reset-button:hover {
-            background: #d8e0ec;
-        }
+    .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
 
-        aside {
-            align-self: start;
-            padding: 20px;
-            border-radius: 12px;
-            background: #f3f6fb;
-        }
-
-        aside p {
-            color: #5b6577;
-            line-height: 1.6;
-        }
-
-        .note {
-            margin-top: 18px;
-            color: #687386;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 700px) {
-            .booking-card {
-                grid-template-columns: 1fr;
-                padding: 22px;
-            }
-
-            .intro h2 {
-                font-size: 1.6rem;
-            }
-        }
     </style>
 </head>
 <body>
     <header>
         <h1>IPL 2026 Ticket Booking</h1>
-        <nav aria-label="Main navigation">
-            <a href="index.html">← Back to home</a>
-        </nav>
+        <a href="index.html">← Back to home</a>
     </header>
 
     <main>
         <section class="intro">
             <h2>Book Your Match Tickets</h2>
-            <p>Choose your match and ticket category to get started.</p>
+            <p>Select a match and ticket category to see the price.</p>
         </section>
 
-        <div class="booking-card">
-            <section aria-labelledby="form-heading">
-                <h3 id="form-heading">Your booking details</h3>
+        <div class="card">
+            <section>
+                <h3>Your booking details</h3>
 
-                <form action="#" method="get">
+                <form id="booking-form">
                     <div class="field">
                         <label for="name">Full name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            autocomplete="name"
-                            minlength="2"
-                            maxlength="50"
-                            placeholder="Enter your name"
-                            required
-                        >
+                        <input type="text" id="name" name="name"
+                               minlength="2" maxlength="50" required>
                     </div>
 
                     <div class="field">
                         <label for="email">Email address</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            autocomplete="email"
-                            maxlength="100"
-                            placeholder="you@example.com"
-                            required
-                        >
+                        <input type="email" id="email" name="email"
+                               maxlength="100" required>
                     </div>
 
                     <div class="field">
                         <label for="phone">Phone number</label>
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            autocomplete="tel"
-                            pattern="[0-9+\-\s()]{7,20}"
-                            title="Enter 7–20 characters using digits, spaces, +, hyphens, or parentheses."
-                            placeholder="Enter your phone number"
-                            required
-                        >
+                        <input type="tel" id="phone" name="phone"
+                               pattern="[0-9+\-\s()]{7,20}"
+                               title="Enter 7–20 characters using digits, spaces, +, hyphens, or parentheses."
+                               required>
                     </div>
 
                     <div class="field">
@@ -267,44 +210,103 @@
                     </div>
 
                     <div class="field">
-                        <label for="quantity">Number of tickets</label>
-                        <input
-                            type="number"
-                            id="quantity"
-                            name="quantity"
-                            min="1"
-                            max="10"
-                            placeholder="1–10"
-                            required
-                        >
+                        <label for="quantity">Number of tickets (1–10)</label>
+                        <input type="number" id="quantity" name="quantity"
+                               min="1" max="10" value="1" required>
                     </div>
 
                     <fieldset>
-                        <legend>Seat preference <span>(optional)</span></legend>
-                        <label>
-                            <input type="radio" name="preference" value="aisle">
-                            Aisle seat
-                        </label>
-                        <label>
-                            <input type="radio" name="preference" value="no-preference">
-                            No preference
-                        </label>
+                        <legend>Seat preference (optional)</legend>
+                        <label><input type="radio" name="preference" value="aisle"> Aisle seat</label>
+                        <label><input type="radio" name="preference" value="none"> No preference</label>
                     </fieldset>
 
-                    <div class="buttons">
-                        <button class="submit-button" type="submit">Submit booking</button>
-                        <button class="reset-button" type="reset">Reset form</button>
-                    </div>
+                    <button class="submit-button" type="submit">Confirm Booking</button>
+                    <button class="reset-button" type="reset">Reset Form</button>
                 </form>
+
+                <div id="success-message" role="status" tabindex="-1"></div>
             </section>
 
             <aside>
-                <h3>Before you book</h3>
-                <p>Check your match and ticket category before submitting the form.</p>
-                <p>Ticket quantity must be between 1 and 10. Required fields must be completed.</p>
-                <p class="note">This sample form demonstrates browser validation. It does not save bookings.</p>
+                <h3>Ticket prices</h3>
+                <p>Price per ticket for the selected match:</p>
+                <ul class="prices">
+                    <li>General: <span id="general-price">—</span></li>
+                    <li>Premium: <span id="premium-price">—</span></li>
+                    <li>VIP: <span id="vip-price">—</span></li>
+                </ul>
+                <p id="selected-price">Price per ticket: —</p>
+                <p class="total">Total: <span id="total-price">—</span></p>
             </aside>
         </div>
     </main>
+
+    <script>
+        const prices = {
+            "match-01": { general: 1500, premium: 3500, vip: 7500 },
+            "match-02": { general: 1200, premium: 3000, vip: 6500 },
+            "match-03": { general: 1000, premium: 2500, vip: 5500 }
+        };
+
+        const form = document.getElementById("booking-form");
+        const matchSelect = document.getElementById("match");
+        const standSelect = document.getElementById("stand");
+        const quantityInput = document.getElementById("quantity");
+        const successMessage = document.getElementById("success-message");
+
+        function formatPrice(amount) {
+            return "Rs. " + amount.toLocaleString("en-IN");
+        }
+
+        function updatePrices() {
+            const match = matchSelect.value;
+            const quantity = Number(quantityInput.value) || 0;
+
+            ["general", "premium", "vip"].forEach(category => {
+                const output = document.getElementById(category + "-price");
+                output.textContent = match
+                    ? formatPrice(prices[match][category])
+                    : "—";
+            });
+
+            const ticketPrice = match && standSelect.value
+                ? prices[match][standSelect.value]
+                : 0;
+
+            document.getElementById("selected-price").textContent =
+                "Price per ticket: " + (ticketPrice ? formatPrice(ticketPrice) : "—");
+
+            document.getElementById("total-price").textContent =
+                ticketPrice && quantity ? formatPrice(ticketPrice * quantity) : "—";
+        }
+
+        matchSelect.addEventListener("change", updatePrices);
+        standSelect.addEventListener("change", updatePrices);
+        quantityInput.addEventListener("input", updatePrices);
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const matchName = matchSelect.options[matchSelect.selectedIndex].text;
+            const categoryName = standSelect.options[standSelect.selectedIndex].text;
+            const quantity = Number(quantityInput.value);
+            const total = prices[matchSelect.value][standSelect.value] * quantity;
+
+            successMessage.textContent =
+                `Booking successful! ${quantity} ${categoryName} ticket(s) for ${matchName}. Total: ${formatPrice(total)}.`;
+
+            successMessage.style.display = "block";
+            successMessage.focus();
+        });
+
+        form.addEventListener("reset", function () {
+            successMessage.style.display = "none";
+            setTimeout(updatePrices, 0);
+        });
+
+        updatePrices();
+    </script>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
