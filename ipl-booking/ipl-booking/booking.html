@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book tickets for IPL 2026 matches">
+    <title>Book Tickets | IPL 2026</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #172033;
+            background: #f3f6fb;
+        }
+
+        header {
+            padding: 22px 8%;
+            color: white;
+            background: #102b5c;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 1.6rem;
+        }
+
+        nav a {
+            color: #dce8ff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            width: min(900px, 92%);
+            margin: 40px auto;
+        }
+
+        .intro {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            margin-bottom: 8px;
+            color: #102b5c;
+            font-size: 2rem;
+        }
+
+        .intro p {
+            margin-top: 0;
+            color: #5b6577;
+        }
+
+        .booking-card {
+            display: grid;
+            grid-template-columns: 1fr 270px;
+            gap: 32px;
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(16, 43, 92, 0.1);
+        }
+
+        .booking-card h3 {
+            margin-top: 0;
+            color: #102b5c;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label,
+        legend {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid #cbd3e1;
+            border-radius: 8px;
+            background: white;
+            font: inherit;
+        }
+
+        input:focus,
+        select:focus {
+            outline: 3px solid #c9dcff;
+            border-color: #2563eb;
+        }
+
+        fieldset {
+            margin: 4px 0 22px;
+            padding: 16px;
+            border: 1px solid #d8deea;
+            border-radius: 8px;
+        }
+
+        fieldset label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 16px 4px 0;
+            font-weight: normal;
+        }
+
+        fieldset input {
+            width: auto;
+            min-height: auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            min-height: 44px;
+            padding: 10px 18px;
+            border: 0;
+            border-radius: 8px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            color: white;
+            background: #e24b32;
+        }
+
+        .submit-button:hover {
+            background: #c83c27;
+        }
+
+        .reset-button {
+            color: #24324a;
+            background: #e8edf5;
+        }
+
+        .reset-button:hover {
+            background: #d8e0ec;
+        }
+
+        aside {
+            align-self: start;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f3f6fb;
+        }
+
+        aside p {
+            color: #5b6577;
+            line-height: 1.6;
+        }
+
+        .note {
+            margin-top: 18px;
+            color: #687386;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 700px) {
+            .booking-card {
+                grid-template-columns: 1fr;
+                padding: 22px;
+            }
+
+            .intro h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IPL 2026 Ticket Booking</h1>
+        <nav aria-label="Main navigation">
+            <a href="index.html">← Back to home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Book Your Match Tickets</h2>
+            <p>Choose your match and ticket category to get started.</p>
+        </section>
+
+        <div class="booking-card">
+            <section aria-labelledby="form-heading">
+                <h3 id="form-heading">Your booking details</h3>
+
+                <form action="#" method="get">
+                    <div class="field">
+                        <label for="name">Full name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="50"
+                            placeholder="Enter your name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            maxlength="100"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            autocomplete="tel"
+                            pattern="[0-9+\-\s()]{7,20}"
+                            title="Enter 7–20 characters using digits, spaces, +, hyphens, or parentheses."
+                            placeholder="Enter your phone number"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="match">Select a match</label>
+                        <select id="match" name="match" required>
+                            <option value="">Choose a match</option>
+                            <option value="match-01">Match 01 — RCB vs MI</option>
+                            <option value="match-02">Match 02 — CSK vs KKR</option>
+                            <option value="match-03">Match 03 — DC vs SRH</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="stand">Stand category</label>
+                        <select id="stand" name="stand" required>
+                            <option value="">Choose a category</option>
+                            <option value="general">General</option>
+                            <option value="premium">Premium</option>
+                            <option value="vip">VIP</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="quantity">Number of tickets</label>
+                        <input
+                            type="number"
+                            id="quantity"
+                            name="quantity"
+                            min="1"
+                            max="10"
+                            placeholder="1–10"
+                            required
+                        >
+                    </div>
+
+                    <fieldset>
+                        <legend>Seat preference <span>(optional)</span></legend>
+                        <label>
+                            <input type="radio" name="preference" value="aisle">
+                            Aisle seat
+                        </label>
+                        <label>
+                            <input type="radio" name="preference" value="no-preference">
+                            No preference
+                        </label>
+                    </fieldset>
+
+                    <div class="buttons">
+                        <button class="submit-button" type="submit">Submit booking</button>
+                        <button class="reset-button" type="reset">Reset form</button>
+                    </div>
+                </form>
+            </section>
+
+            <aside>
+                <h3>Before you book</h3>
+                <p>Check your match and ticket category before submitting the form.</p>
+                <p>Ticket quantity must be between 1 and 10. Required fields must be completed.</p>
+                <p class="note">This sample form demonstrates browser validation. It does not save bookings.</p>
+            </aside>
+        </div>
+    </main>
+</body>
+</html>
