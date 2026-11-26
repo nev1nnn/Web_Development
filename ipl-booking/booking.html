@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets | IPL 2026</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #172033;
+            background: #f3f6fb;
+        }
+
+        header {
+            padding: 22px 8%;
+            color: white;
+            background: #102b5c;
+        }
+
+        header h1 { margin: 0 0 10px; }
+        header a { color: #dce8ff; }
+
+        main {
+            width: min(900px, 92%);
+            margin: 36px auto;
+        }
+
+        .intro { margin-bottom: 24px; text-align: center; }
+        .intro h2 { color: #102b5c; }
+
+        .card {
+            display: grid;
+            grid-template-columns: 1fr 270px;
+            gap: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(16, 43, 92, .1);
+        }
+
+        .field { margin-bottom: 16px; }
+
+        label, legend {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            min-height: 44px;
+            padding: 10px;
+            border: 1px solid #cbd3e1;
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: 3px solid #c9dcff;
+            border-color: #2563eb;
+        }
+
+        fieldset {
+            margin: 4px 0 20px;
+            padding: 14px;
+            border: 1px solid #d8deea;
+            border-radius: 8px;
+        }
+
+        fieldset label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin: 5px 14px 5px 0;
+            font-weight: normal;
+        }
+
+        fieldset input { width: auto; min-height: auto; }
+
+        button {
+            min-height: 44px;
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 8px;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-button { color: white; background: #e24b32; }
+        .reset-button { color: #24324a; background: #e8edf5; }
+
+        aside {
+            align-self: start;
+            padding: 20px;
+            background: #f3f6fb;
+            border-radius: 12px;
+        }
+
+        .prices {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .total {
+            padding-top: 12px;
+            border-top: 1px solid #cbd3e1;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .booking-summary {
+            margin-top: 24px;
+            padding: 18px;
+            background: white;
+            border: 1px solid #d8deea;
+            border-radius: 12px;
+        }
+
+        .booking-summary h3 { margin-top: 0; }
+        .booking-summary p { margin: 10px 0; }
+
+        #summary-total {
+            color: #102b5c;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        #success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 16px;
+            color: #14532d;
+            background: #dcfce7;
+            border-radius: 8px;
+        }
+
+        #success-message:focus { outline: 2px solid #15803d; }
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            padding: 14px 20px;
+            color: white;
+            background: #102b5c;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 700px) {
+            .card { grid-template-columns: 1fr; padding: 22px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>IPL 2026 Ticket Booking</h1>
+        <a href="index.html">← Back to home</a>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Book Your Match Tickets</h2>
+            <p>Select a match and ticket category to see the price.</p>
+        </section>
+
+        <div class="card">
+            <section>
+                <h3>Your booking details</h3>
+
+                <form id="booking-form">
+                    <div class="field">
+                        <label for="name">Full name</label>
+                        <input type="text" id="name" name="name"
+                               minlength="2" maxlength="50" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email"
+                               maxlength="100" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" name="phone"
+                               pattern="[0-9+\-\s()]{7,20}"
+                               title="Enter 7–20 characters using digits, spaces, +, hyphens, or parentheses."
+                               required>
+                    </div>
+
+                    <div class="field">
+                        <label for="match">Select a match</label>
+                        <select id="match" name="match" required>
+                            <option value="">Choose a match</option>
+                            <option value="match-01">Match 01 — RCB vs MI</option>
+                            <option value="match-02">Match 02 — CSK vs KKR</option>
+                            <option value="match-03">Match 03 — DC vs SRH</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="stand">Stand category</label>
+                        <select id="stand" name="stand" required>
+                            <option value="">Choose a category</option>
+                            <option value="general">General</option>
+                            <option value="premium">Premium</option>
+                            <option value="vip">VIP</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="quantity">Number of tickets (1–10)</label>
+                        <input type="number" id="quantity" name="quantity"
+                               min="1" max="10" value="1" required>
+                    </div>
+
+                    <fieldset>
+                        <legend>Seat preference (optional)</legend>
+                        <label><input type="radio" name="preference" value="aisle"> Aisle seat</label>
+                        <label><input type="radio" name="preference" value="none"> No preference</label>
+                    </fieldset>
+
+                    <button class="submit-button" type="submit">Confirm Booking</button>
+                    <button class="reset-button" type="reset">Reset Form</button>
+                </form>
+
+                <div id="success-message" role="status" tabindex="-1"></div>
+            </section>
+
+            <aside>
+                <h3>Ticket prices</h3>
+                <p>Price per ticket for the selected match:</p>
+
+                <ul class="prices">
+                    <li>General: <span id="general-price">—</span></li>
+                    <li>Premium: <span id="premium-price">—</span></li>
+                    <li>VIP: <span id="vip-price">—</span></li>
+                </ul>
+
+                <p id="selected-price">Price per ticket: —</p>
+                <p class="total">Total: <span id="total-price">—</span></p>
+
+                <section class="booking-summary" aria-live="polite">
+                    <h3>Booking Summary</h3>
+                    <p>Match: <span id="summary-match">Not selected</span></p>
+                    <p>Stand: <span id="summary-stand">Not selected</span></p>
+                    <p>Tickets: <span id="summary-quantity">1</span></p>
+                    <p>Total: <span id="summary-total">Rs. 0</span></p>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <div id="toast-container" class="toast-container"
+     aria-live="polite" aria-atomic="true"></div>
+
+    <script type="module" src="/app.js"></script>
+</body>
+</html>

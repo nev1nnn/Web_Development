@@ -1,0 +1,526 @@
+/* IPL TICKET BOOKING WEBSITE
+   Theme: Navy Blue + Gold
+*/
+
+:root {
+    --primary: #071a35;
+    --secondary: #102b50;
+    --accent: #f5b700;
+    --background: #f4f6fa;
+    --text: #172337;
+    --white: #ffffff;
+    --border: #dce2eb;
+    --shadow: 0 8px 25px rgba(7, 26, 53, 0.10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
+body {
+    min-height: 100vh;
+    padding-top: 115px;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.3;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 28px;
+}
+
+h3 {
+    margin: 20px 0 10px;
+    color: var(--secondary);
+}
+
+a {
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Header and navigation */
+.site-header {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    min-height: 75px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 15px 8%;
+    background: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    color: var(--accent);
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.site-header nav {
+    background: transparent;
+}
+
+.site-header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.site-header nav a {
+    color: var(--white);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus {
+    color: var(--accent);
+}
+
+.menu-toggle {
+    display: none;
+    padding: 5px 10px;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main content and sections */
+main {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 25px;
+}
+
+main > section {
+    margin-bottom: 30px;
+    padding: 35px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.hero {
+    overflow: hidden;
+    padding: 40px 25px;
+    background: linear-gradient(135deg, var(--primary), #174b82);
+    color: var(--white);
+    text-align: center;
+}
+
+.hero h1 {
+    margin: 10px 0 20px;
+    color: var(--accent);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.hero p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.hero a,
+.button {
+    display: inline-block;
+    margin: 8px;
+    padding: 12px 25px;
+    color: var(--primary);
+    background: var(--accent);
+    border: 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hero a:hover,
+.button:hover {
+    background: #ffd54f;
+    transform: translateY(-2px);
+}
+
+#about-heading {
+    padding-left: 12px;
+    border-left: 5px solid var(--accent);
+}
+
+.about ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 15px 0 25px;
+    list-style: none;
+}
+
+.about li {
+    padding: 15px;
+    background: #edf2f8;
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+}
+
+/* Schedule controls and match cards */
+.schedule-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.schedule-controls label {
+    display: inline;
+    margin: 0;
+}
+
+.schedule-controls select {
+    width: auto;
+    min-width: 200px;
+    margin: 0;
+}
+
+.view-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.view-button {
+    padding: 9px 14px;
+    color: var(--primary);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.view-button:hover,
+.view-button.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.match-card {
+    padding: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.match-card h3 {
+    margin-top: 0;
+}
+
+.match-teams {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.ticket-prices {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.match-card .button {
+    margin: 8px 0 0;
+}
+
+.match-card[hidden] {
+    display: none;
+}
+
+/* List view is activated by JavaScript. */
+.match-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.match-grid.list-view .match-card {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 0 20px;
+}
+
+.match-grid.list-view .match-card h3,
+.match-grid.list-view .match-card .button {
+    grid-column: 1 / -1;
+}
+
+/* Forms and shared controls */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select,
+input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font: inherit;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 5px rgba(245, 183, 0, 0.3);
+}
+
+/* Tables */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    background: var(--white);
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+caption {
+    padding: 15px;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+th {
+    padding: 15px;
+    color: var(--white);
+    background: var(--primary);
+    text-align: left;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:nth-child(even) {
+    background: #f0f4f9;
+}
+
+tbody tr:hover {
+    background: #fff5d6;
+}
+
+/* Guidelines */
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.guidelines-grid article {
+    margin: 0;
+    padding: 20px;
+    background: #edf2f8;
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+}
+
+.guidelines-grid article h3 {
+    margin-top: 0;
+}
+
+/* Booking summary */
+aside {
+    margin-top: 30px;
+    padding: 25px;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 12px;
+}
+
+aside h3 {
+    color: var(--accent);
+}
+
+aside dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+aside dt {
+    font-weight: bold;
+}
+
+aside dd {
+    text-align: right;
+}
+
+/* Toast notifications */
+.toast-container {
+    position: fixed;
+    z-index: 2000;
+    right: 20px;
+    bottom: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.toast {
+    max-width: min(360px, calc(100vw - 40px));
+    padding: 12px 18px;
+    color: var(--white);
+    background: var(--primary);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* Footer */
+.site-footer {
+    margin-top: 30px;
+    padding: 25px;
+    color: var(--white);
+    background: var(--primary);
+    text-align: center;
+}
+
+.site-footer p {
+    color: #dce2eb;
+}
+
+/* Tablet: single-column cards and guidelines */
+@media (max-width: 900px) {
+    .match-grid,
+    .guidelines-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-header {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+}
+
+/* Mobile navigation and layout */
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 85px;
+    }
+
+    body {
+        padding-top: 75px;
+    }
+
+    .site-header {
+        min-height: 70px;
+        flex-wrap: wrap;
+        padding: 12px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .site-header nav {
+        display: none;
+        flex-basis: 100%;
+    }
+
+    .site-header nav.open {
+        display: block;
+    }
+
+    .site-header nav ul {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px 0;
+    }
+
+    .site-header nav a {
+        display: block;
+        padding: 6px 0;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    main > section {
+        padding: 20px;
+    }
+
+    .schedule-controls {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .schedule-controls select {
+        width: 100%;
+    }
+
+    .view-toggle {
+        margin-left: 0;
+    }
+
+    .match-grid,
+    .match-grid.list-view,
+    .guidelines-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-grid.list-view .match-card {
+        display: block;
+    }
+
+    .table-wrapper table {
+        min-width: 650px;
+    }
+
+    aside dl {
+        grid-template-columns: 1fr;
+    }
+
+    aside dd {
+        text-align: left;
+    }
+}

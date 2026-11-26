@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IPL 2026 match schedules and ticket booking">
+    <title>IPL 2026 Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header id="home" class="site-header">
+        <a class="logo" href="#home">IPL 2026 Tickets</a>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="main-nav"
+        >
+            ☰
+        </button>
+
+        <nav id="main-nav" aria-label="Main navigation">
+            <ul>
+                <li><a href="#matches">Matches</a></li>
+                <li><a href="booking.html#booking-form">Book Ticket</a></li>
+                <li><a href="#my-bookings">My Bookings</a></li>
+                <li><a href="#guidelines">Guidelines</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Experience the Stadium Energy Live!</h1>
+            <p>Watch your favourite teams compete live in IPL 2026.</p>
+            <a class="button" href="#matches">View Schedule</a>
+            <a class="button" href="booking.html#booking-form">Book a Ticket</a>
+        </section>
+
+        <section class="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About IPL 2026</h2>
+            <p>Enjoy an unforgettable cricket experience with teams and venues across India.</p>
+
+            <h3>Popular Teams</h3>
+            <ul>
+                <li>Chennai Super Kings</li>
+                <li>Mumbai Indians</li>
+                <li>Royal Challengers Bengaluru</li>
+                <li>Kolkata Knight Riders</li>
+                <li>Rajasthan Royals</li>
+            </ul>
+
+            <h3>Major Match Venues</h3>
+            <ul>
+                <li>Wankhede Stadium, Mumbai</li>
+                <li>M. A. Chidambaram Stadium, Chennai</li>
+                <li>M. Chinnaswamy Stadium, Bengaluru</li>
+                <li>Eden Gardens, Kolkata</li>
+                <li>Narendra Modi Stadium, Ahmedabad</li>
+            </ul>
+        </section>
+
+        <section id="matches" class="matches-section" aria-labelledby="schedule-heading">
+            <h2 id="schedule-heading">Match Schedule</h2>
+
+            <div class="schedule-controls">
+                <label for="team-filter">Filter by team:</label>
+                <select id="team-filter" name="team-filter">
+                    <option value="all">All Teams</option>
+                    <option value="csk">Chennai Super Kings</option>
+                    <option value="mi">Mumbai Indians</option>
+                    <option value="rcb">Royal Challengers Bengaluru</option>
+                    <option value="kkr">Kolkata Knight Riders</option>
+                    <option value="dc">Delhi Capitals</option>
+                    <option value="srh">Sunrisers Hyderabad</option>
+                </select>
+
+                <div class="view-toggle" role="group" aria-label="Match display style">
+                    <button class="view-button is-active" type="button" data-view="grid" aria-pressed="true">
+                        Grid view
+                    </button>
+                    <button class="view-button" type="button" data-view="list" aria-pressed="false">
+                        List view
+                    </button>
+                </div>
+            </div>
+
+            <div class="match-grid" id="match-list">
+                <article class="match-card" data-teams="rcb mi">
+                    <h3>Match 01</h3>
+                    <p class="match-teams">Royal Challengers Bengaluru vs Mumbai Indians</p>
+                    <p><strong>Date &amp; time:</strong> April 5, 2026, 7:30 PM</p>
+                    <p><strong>Venue:</strong> Wankhede Stadium, Mumbai</p>
+                    <ul class="ticket-prices">
+                        <li>General: Rs. 1,500</li>
+                        <li>Premium: Rs. 3,500</li>
+                        <li>VIP: Rs. 7,500</li>
+                    </ul>
+                    <a class="button" href="booking.html#booking-form" data-match="match-01">Book tickets</a>
+                </article>
+
+                <article class="match-card" data-teams="csk kkr">
+                    <h3>Match 02</h3>
+                    <p class="match-teams">Chennai Super Kings vs Kolkata Knight Riders</p>
+                    <p><strong>Date &amp; time:</strong> April 6, 2026, 7:30 PM</p>
+                    <p><strong>Venue:</strong> M. A. Chidambaram Stadium, Chennai</p>
+                    <ul class="ticket-prices">
+                        <li>General: Rs. 1,200</li>
+                        <li>Premium: Rs. 3,000</li>
+                        <li>VIP: Rs. 6,500</li>
+                    </ul>
+                    <a class="button" href="booking.html#booking-form" data-match="match-02">Book tickets</a>
+                </article>
+
+                <article class="match-card" data-teams="dc srh">
+                    <h3>Match 03</h3>
+                    <p class="match-teams">Delhi Capitals vs Sunrisers Hyderabad</p>
+                    <p><strong>Date &amp; time:</strong> April 7, 2026, 7:30 PM</p>
+                    <p><strong>Venue:</strong> Arun Jaitley Stadium, Delhi</p>
+                    <ul class="ticket-prices">
+                        <li>General: Rs. 1,000</li>
+                        <li>Premium: Rs. 2,500</li>
+                        <li>VIP: Rs. 5,500</li>
+                    </ul>
+                    <a class="button" href="booking.html#booking-form" data-match="match-03">Book tickets</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="book-ticket" aria-labelledby="booking-heading">
+            <h2 id="booking-heading">Ticket Booking</h2>
+            <p><a href="booking.html#booking-form">Go to the ticket booking form</a></p>
+        </section>
+
+        <section id="my-bookings" aria-labelledby="bookings-heading">
+            <h2 id="bookings-heading">My Ticket Bookings</h2>
+            <div class="table-wrapper">
+                <table>
+                    <caption>Booking records</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Booking ID</th>
+                            <th scope="col">Match</th>
+                            <th scope="col">Stand</th>
+                            <th scope="col">Tickets</th>
+                            <th scope="col">Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5">No bookings yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="guidelines" class="guidelines" aria-labelledby="guidelines-heading">
+            <h2 id="guidelines-heading">Guidelines</h2>
+
+            <div class="guidelines-grid">
+                <article>
+                    <h3>Ticket Verification</h3>
+                    <p>Keep your digital or printed ticket ready for scanning at the stadium entrance.</p>
+                </article>
+
+                <article>
+                    <h3>ID Proof Requirement</h3>
+                    <p>Carry a valid government-issued photo ID matching the name on your booking.</p>
+                </article>
+
+                <article>
+                    <h3>Prohibited Items</h3>
+                    <p>Outside food, glass containers, large bags, fireworks, and professional cameras are not allowed.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 IPL Ticket Booking. All rights reserved.</p>
+    </footer>
+</body>
+</html>
